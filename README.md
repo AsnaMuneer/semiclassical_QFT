@@ -22,7 +22,7 @@ k−j
 
 **Measurement and Feedback**: After all the necessary phase rotations are completed for a given qubit, it is measured. The result is immediately stored in the classical_register and is then used to inform the phase rotations for the subsequent qubits in the loop. This process of measuring one qubit at a time and using the classical result for later operations is the central tenet of the semiclassical QFT, which significantly reduces the quantum coherence time required for the circuit.
 
-**Project Achievements with the Semiclassical QFT**
+# Project Achievements with the Semiclassical QFT
 The successful implementation of this hybrid QFT allowed for the completion of the period-finding portion of Shor's algorithm. The specific outcome of the simulation demonstrated the following:
 
 **Noise Resilience**: By relying on classical feedback and one-qubit measurements, the algorithm was made significantly more resilient to noise. This avoids the decoherence that would accumulate over a long, complex circuit needed for a fully-quantum inverse QFT.
