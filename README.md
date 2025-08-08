@@ -31,7 +31,14 @@ The successful implementation of this hybrid QFT allowed for the completion of t
 
 **Successful Period Finding**: The semiclassical QFT successfully transformed the quantum state encoding the periodic information into a measurable phase value. 
 
+**Noise Model**
+The noise model used for the semiclassical QFT simulation was a depolarizing noise model. This is a common type of noise model in quantum computing simulations. It's designed to mimic the effect of decoherence and gate errors on a real quantum machine.
 
+**Type of Model**: A depolarizing noise model introduces a small chance that an error will occur after each quantum gate is applied.
+
+**Error Rate**: As mentioned in your explanation, the error rate was set to 0.001. This means that after any single-qubit or two-qubit gate, there was a 0.1% chance of a random error (a bit-flip, a phase-flip, or both) corrupting the qubit's state.
+
+**Impact**: This noise model accurately explains why the success probability of the QFT decreased as the number of qubits increased. With more qubits, the quantum circuit becomes deeper (more gates are required), giving the depolarizing noise more opportunities to corrupt the quantum state. This leads to a lower fidelity and a reduced probability of measuring the correct result, which is precisely what the benchmarking graphs and debugging counts showed.
 In a real-world quantum computation, the results are probabilistic. When the quantum circuit for Shor's algorithm was run, the counting register is in a superposition of many different states. When these qubits were measured, a single answer wasnt found; there were many possible outcomes.
 
 # QFT results
