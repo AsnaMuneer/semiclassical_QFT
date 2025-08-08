@@ -1,5 +1,6 @@
-# semiclassical_QFT
-The Semiclassical Quantum Fourier Transform (QFT)
+# The Semiclassical Quantum Fourier Transform (QFT) and Benchmarking 
+Here is a detailed explanation of the semiclassical Quantum Fourier Transform (QFT), a key component of the project's Shor's algorithm simulation. It also analyzes the results of a benchmarking test, including the output histograms, to demonstrate the algorithm's performance under realistic, noisy conditions.
+
 The Quantum Fourier Transform (QFT) is a fundamental subroutine in quantum computing, but its full implementation requires a large number of quantum gates. This can be prohibitive on current quantum hardware, where qubits are susceptible to noise and errors. To address this, a resource-efficient, hybrid approach was required for this project's simulation.
 
 # Project Achievements
@@ -11,24 +12,24 @@ The semiclassical QFT replaces a traditional inverse QFT circuit with an iterati
 # The Semiclassical QFT: A Detailed Mechanism
 The implementation of the semiclassical QFT replaces a complex, fully-quantum Inverse QFT circuit with an iterative, classical-feedback loop. This method is achieved through a sequence of single-qubit operations and measurements, which are controlled by classical data. 
 
-Iterative Loop: The algorithm's core is a for loop that processes the counting qubits in reverse order, from the most significant qubit down to the least significant. This top-down approach is essential to the semiclassical method.
+**Iterative Loop**: The algorithm's core is a for loop that processes the counting qubits in reverse order, from the most significant qubit down to the least significant. This top-down approach is essential to the semiclassical method.
 
-Hadamard Gate Application: Within the loop, a Hadamard gate is applied to the current qubit. This operation places the qubit into a superposition state, a foundational step for all quantum Fourier transforms.
+**Hadamard Gate Application**: Within the loop, a Hadamard gate is applied to the current qubit. This operation places the qubit into a superposition state, a foundational step for all quantum Fourier transforms.
 
-Classically-Controlled Phase Rotations: This is the key innovation of the semiclassical QFT. For each qubit, a series of conditional phase rotations is applied. The angle of rotation, θ=−π/(2 
+**Classically-Controlled Phase Rotations**: This is the key innovation of the semiclassical QFT. For each qubit, a series of conditional phase rotations is applied. The angle of rotation, θ=−π/(2 
 k−j
  ), is calculated by a classical processor. The rotation itself is a quantum operation, but it is controlled by a classical bit stored in the classical_register. The code uses a specific Qiskit construct, with qc.if_test((classical_register[k], 1)):, which dictates that the phase rotation is applied only if the corresponding classical bit c_reg[k] is 1. This allows the quantum circuit to be dynamically updated based on the results of previous measurements.
 
-Measurement and Feedback: After all the necessary phase rotations are completed for a given qubit, it is measured. The result is immediately stored in the classical_register and is then used to inform the phase rotations for the subsequent qubits in the loop. This process of measuring one qubit at a time and using the classical result for later operations is the central tenet of the semiclassical QFT, which significantly reduces the quantum coherence time required for the circuit.
+**Measurement and Feedback**: After all the necessary phase rotations are completed for a given qubit, it is measured. The result is immediately stored in the classical_register and is then used to inform the phase rotations for the subsequent qubits in the loop. This process of measuring one qubit at a time and using the classical result for later operations is the central tenet of the semiclassical QFT, which significantly reduces the quantum coherence time required for the circuit.
 
-Project Achievements with the Semiclassical QFT
+**Project Achievements with the Semiclassical QFT**
 The successful implementation of this hybrid QFT allowed for the completion of the period-finding portion of Shor's algorithm. The specific outcome of the simulation demonstrated the following:
 
-Noise Resilience: By relying on classical feedback and one-qubit measurements, the algorithm was made significantly more resilient to noise. This avoids the decoherence that would accumulate over a long, complex circuit needed for a fully-quantum inverse QFT.
+**Noise Resilience**: By relying on classical feedback and one-qubit measurements, the algorithm was made significantly more resilient to noise. This avoids the decoherence that would accumulate over a long, complex circuit needed for a fully-quantum inverse QFT.
 
-Reduced Quantum Resources: The need for multi-qubit controlled phase gates was eliminated, which simplified the circuit and made it feasible to run on a simulator. This demonstrates a practical path toward implementing such algorithms on current, limited-qubit quantum hardware.
+**Reduced Quantum Resources**: The need for multi-qubit controlled phase gates was eliminated, which simplified the circuit and made it feasible to run on a simulator. This demonstrates a practical path toward implementing such algorithms on current, limited-qubit quantum hardware.
 
-Successful Period Finding: The semiclassical QFT successfully transformed the quantum state encoding the periodic information into a measurable phase value. 
+**Successful Period Finding**: The semiclassical QFT successfully transformed the quantum state encoding the periodic information into a measurable phase value. 
 
 
 In a real-world quantum computation, the results are probabilistic. When the quantum circuit for Shor's algorithm was run, the counting register is in a superposition of many different states. When these qubits were measured, a single answer wasnt found; there were many possible outcomes.
